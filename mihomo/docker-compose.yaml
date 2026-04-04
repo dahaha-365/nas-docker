@@ -1,0 +1,9 @@
+services:
+  mihomo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mihomo
+    restart: always
+    volumes:
+      - ./data:/root/mihomo
