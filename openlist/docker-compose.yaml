@@ -1,0 +1,13 @@
+services:
+  openlist:
+    image: openlistteam/openlist:latest
+    container_name: openlist
+    user: '0:0' # Please replace `0:0` with the actual user ID and group ID you want to use to run OpenList.
+    volumes:
+      - ./data:/opt/openlist/data
+    ports:
+      - '${HTTP_PORT:-5244}:5244'
+    environment:
+      - UMASK=022
+      - TZ=${TZ:-Asia/Shanghai}
+    restart: unless-stopped

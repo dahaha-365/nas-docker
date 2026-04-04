@@ -5,5 +5,16 @@ services:
       dockerfile: Dockerfile
     container_name: mihomo
     restart: always
+    network_mode: bridge
+    cap_add:
+      - NET_ADMIN
     volumes:
       - ./data:/root/mihomo
+    environment:
+      SUBSCRIBE_URL: ${SUBSCRIBE_URL:-}
+    ports:
+      - "${HTTP_PORT:-7890}:7890"
+      - "${SOCKS_PORT:-7891}:7891"
+      - "${MIXED_PORT:-7892}:7892"
+      - "${REDIR_PORT:-7893}:7893"
+      - "${API_PORT:-9090}:9090"
