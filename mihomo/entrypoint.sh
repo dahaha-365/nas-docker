@@ -2,7 +2,7 @@
 
 echo "正在进行初始化设置..."
 
-apk add --no-cache gzip ca-certificates yq iptables
+apk add --no-cache gzip ca-certificates yq iptables curl
 
 echo "系统平台：${PLATFORM}"
 echo "系统架构：${ARCH}"
@@ -93,6 +93,7 @@ yq eval -i '.socks-port = 7891' "$CONFIG_FILE"
 yq eval -i '.mixed-port = 7892' "$CONFIG_FILE"
 yq eval -i '.redir-port = 7893' "$CONFIG_FILE"
 yq eval -i '.tproxy-port = 7894' "$CONFIG_FILE"
+yq eval -i '.external-controller-unix = "mihomo.sock"' "$CONFIG_FILE"
 
 echo "正在检查 Tun 模式所需的网络环境..."
 
