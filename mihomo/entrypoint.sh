@@ -274,7 +274,6 @@ case "$1" in
         exit $?
         ;;
     "")
-        # 无参数：执行完整初始化流程（见下方）
         ;;
     *)
         echo "用法: $0 {start|stop|restart|update-subscribe|cron-update|update-geo}"
@@ -358,6 +357,10 @@ echo "网络环境检查完毕。"
 update_subscribe || exit 1
 
 setup_cron
+
+if [ ! -f /usr/local/bin/mihomo ]; then
+    ln -s /entrypiont.sh /usr/local/bin/mihomo
+fi
 
 CONTAINER_IP=$(hostname -i 2>/dev/null | awk '{print $1}' || echo '未知')
 echo "========================================"
