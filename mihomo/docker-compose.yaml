@@ -15,11 +15,11 @@ services:
     environment:
       SUBSCRIBE_URL: ${SUBSCRIBE_URL:-}
       SUBSCRIBE_CRON: ${SUBSCRIBE_CRON:-* 6 * * *}
-      RELOAD_CRON: ${RESTART_CRON:-* 2 * * *}
-      RESTART_CRON: ${RESTART_CRON:-0 5 * * *}
+      GEO_CRON: ${GEO_CRON:-0 5 * * *}
     ports:
       - "${HTTP_PORT:-7890}:7890"
       - "${SOCKS_PORT:-7891}:7891"
       - "${MIXED_PORT:-7892}:7892"
       - "${REDIR_PORT:-7893}:7893"
+      - "${TPROXY_PORT:-7894}:7894"
       - "${API_PORT:-9090}:9090"
