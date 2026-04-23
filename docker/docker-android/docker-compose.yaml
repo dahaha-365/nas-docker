@@ -1,0 +1,17 @@
+services:
+  docker-android:
+    container_name: docker-android
+    image: budtmo/docker-android:${VERSION:-emulator_11.0}
+    volumes:
+      - ./data:/root/mihomo
+    environment:
+      VNC_PASSWORD: ${VNC_PASSWORD:-}
+      WEB_VNC: ${WEB_VNC:-true}
+      WEB_VNC_PORT: ${WEB_VNC_PORT:-6080}
+      WEB_LOG: ${WEB_LOG:-true}
+      WEB_LOG_PORT: ${WEB_LOG_PORT:-9000}
+      EMULATOR_NAME: ${EMULATOR_NAME:-docker_android}
+      EMULATOR_DATA_PARTITION: ${EMULATOR_DATA_PARTITION:-500m}
+      EMULATOR_DEVICE: ${EMULATOR_DEVICE:-Samsung Galaxy S6}
+      EMULATOR_NO_SKIN: ${EMULATOR_NO_SKIN:-false}
+      EMULATOR_ADDITIONAL_ARGS: ${EMULATOR_ADDITIONAL_ARGS:-}
